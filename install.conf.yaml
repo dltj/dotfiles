@@ -1,3 +1,13 @@
-- clean: []
-- link: {}
+- clean: ["~"]
+
+- link:
+    ~/.gitattributes: gitattributes_global
+    ~/.gitconfig: gitconfig
+    ~/.gitignore_global: gitignore_global
+    ~/.inputrc: inputrc
+    ~/.screenrc: screenrc
+    ~/.tmuxrc: tmuxrc
+    ~/.zsh: zsh/
+    ~/.zshrc: zshrc
+
 - shell: []

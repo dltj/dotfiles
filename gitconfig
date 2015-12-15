@@ -1,0 +1,79 @@
+[core]
+	editor = vi
+	autocrlf = input
+	# Use custom `.gitignore` and `.gitattributes`
+	excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes_global
+	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
+	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	quotepath = false
+
+[alias]
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	stash-unapply = !git stash show -p | git apply -R
+	show-graph = log --graph --abbrev-commit --pretty=oneline
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	up = "!git remote update -p; git merge --ff-only @{u}"
+	syncd = "!f() { echo Syncing this branch with develop && git checkout develop && git pull && git checkout - && git rebase develop; }; f"
+	syncm = "!f() { echo Syncing this branch with master && git checkout master && git pull && git checkout - && git rebase master; }; f"
+	springcleaning = for-each-ref --sort=-committerdate --format='%(refname:short) %(committerdate:short)'
+	ls = log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short
+
+[color]
+	ui = auto
+
+[color "grep"]
+	match = cyan bold
+	selected = blue
+	context = normal
+	filename = magenta
+	linenumber = green
+	separator = yellow
+	function = blue
+
+[push]
+	default = tracking
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+
+[merge]
+	tool = diffmerge
+	stat = true
+
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
+
+[mergetool]
+	keepBackup = true
+
+[branch]
+	autosetupmerge = true
+
+[rerere]
+	enabled = true
+
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+
+# Allow local customizations in the .gitconfig_local file
+[include]
+	path = ~/.gitconfig_local
+  path = ~/.gitconfig_user
