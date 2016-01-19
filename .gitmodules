@@ -27,7 +27,7 @@
 	url = https://github.com/elzr/vim-json
 [submodule "vim/bundle/bundle/vim-neatstatus"]
 	path = vim/bundle/bundle/vim-neatstatus
-	url = git://github.com/maciakl/vim-neatstatus.git
+	url = https://github.com/maciakl/vim-neatstatus.git
 [submodule "vim/bundle/vim-tmux"]
 	path = vim/bundle/vim-tmux
 	url = https://github.com/tmux-plugins/vim-tmux
