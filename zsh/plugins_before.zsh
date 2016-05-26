@@ -1,6 +1,6 @@
 # External plugins (initialized before)
 
 # zsh-completions
-fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
+fpath=(/usr/local/share/zsh/site-functions ~/.zsh/plugins/zsh-completions/src $fpath)
 
 source ~/.zsh/plugins/iterm2_shell_integration.zsh
