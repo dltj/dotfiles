@@ -122,4 +122,4 @@ fi
 }
 
 # http://unix.stackexchange.com/questions/103898/how-to-start-tmux-with-attach-if-a-session-exists/176885#176885
-alias tmux-attach='tmux new-session -A -CC -s main'
+alias tmux-attach='tmux -CC new-session -A -s main'
