@@ -123,3 +123,6 @@ fi
 
 # http://unix.stackexchange.com/questions/103898/how-to-start-tmux-with-attach-if-a-session-exists/176885#176885
 alias tmux-attach='tmux -CC new-session -A -s main'
+
+# https://ma.ttias.be/socks-proxy-linux-ssh-bypass-content-filters/
+alias chrome-socks5='open -a /Applications/Google Chrome.app –args –proxy-server="socks5://127.0.0.1:8080" –host-resolver-rule="MAP * 0.0.0.0, EXCLUDE 127.0.0.1:8080"'
