@@ -121,8 +121,12 @@ if  mv "$@"; then
 fi
 }
 
+# Create a random password of only right-hand keys
+alias randright="LC_CTYPE=C </dev/urandom tr -dc '7890yuiophjklnm-=;,./' | head -c12; echo ''"
+
 # http://unix.stackexchange.com/questions/103898/how-to-start-tmux-with-attach-if-a-session-exists/176885#176885
 alias tmux-attach='tmux -CC new-session -A -s main'
 
 # https://ma.ttias.be/socks-proxy-linux-ssh-bypass-content-filters/
-alias chrome-socks5='open -a /Applications/Google Chrome.app –args –proxy-server="socks5://127.0.0.1:8080" –host-resolver-rule="MAP * 0.0.0.0, EXCLUDE 127.0.0.1:8080"'
+# Set up a SOCKS5 proxy before invoking this command 
+alias chrome-socks5='echo "Prior to running do \`ssh -D 8080 -q -C -N -f ec2-user@dltj.org\`" open -a /Applications/Google Chrome.app –args –proxy-server="socks5://127.0.0.1:8080" –host-resolver-rule="MAP * 0.0.0.0, EXCLUDE 127.0.0.1:8080"'
